@@ -108,12 +108,12 @@ def mail():
         for i in range(0,len(emailsTo)):
             print('emails sent to  AL', emailsTo.iloc[i,1])
             body = "SENT to AL<p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fil it ASAP. </p> if cant ,reply '%s unable to fill muQ'" %(emailsTo.iloc[i,0],emailsTo.iloc[i,0])
-            #mailer(body , emailsTo.iloc[i,1])
+            mailer(body , emailsTo.iloc[i,1])
     else:
         for i in range(0,len(emailsTo)):
             print('emails sent to  team and AL', emailsTo.iloc[i,3])
             body = "SENT TO TEAM <p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fil it ASAP. </p> if cant ,reply '%s unable to fill muQ'" %(emailsTo.iloc[i,0],emailsTo.iloc[i,0])
-            #mailer(body , emailsTo.iloc[i,3])
+            mailer(body , emailsTo.iloc[i,3])
 
     
 
