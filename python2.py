@@ -33,7 +33,7 @@ def mailer(body, to ):
     outlook = win32.Dispatch('outlook.application')
     mail = outlook.CreateItem(0)
     mail.To = to
-    mail.Subject = '[Reminder]Fill MuQ on Sharepoint immediately pythonw'
+    mail.Subject = '[Reminder]Fill MuQ on Sharepoint immediately'
     mail.HTMLBody = body# this field is optional #add sharepoint link
     mail.Send()
 
@@ -103,65 +103,29 @@ def mail():
             df.loc[i,'can_reply'] = True
     emailsTo = email.ix[email.ix[:,0].isin(unsent) & df['can_reply'],]
     
-#    print(datetime.now())
+    print(datetime.now() , emailsTo)
     if datetime.now().minute > 2:        
         for i in range(0,len(emailsTo)):
-            print('emails sent to  AL', emailsTo.iloc[i,1])
-            body = "SENT to AL<p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fil it ASAP. </p> if cant ,reply '%s unable to fill muQ'" %(emailsTo.iloc[i,0],emailsTo.iloc[i,0])
-            mailer(body , emailsTo.iloc[i,1])
+            print('emails sent to  AL', emailsTo.iloc[i,1], 'from' ,emailsTo.iloc[i,0])
+            body = "SENT to AL<p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fill it ASAP. </p><p>%s</p> Note: If you're unable to fill it then reply on this mail using the subject '%s unable to fill muQ' and state your reason in the mail body" %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0])
+#            mailer(body , emailsTo.iloc[i,1])
     else:
         for i in range(0,len(emailsTo)):
-            print('emails sent to  team and AL', emailsTo.iloc[i,3])
-            body = "SENT TO TEAM <p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fil it ASAP. </p> if cant ,reply '%s unable to fill muQ'" %(emailsTo.iloc[i,0],emailsTo.iloc[i,0])
-            mailer(body , emailsTo.iloc[i,3])
-
-    
-
-
+            print('emails sent to  team and AL', emailsTo.iloc[i,3], 'from' ,emailsTo.iloc[i,0])
+            body = "SENT to AL<p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fill it ASAP. </p><p>%s</p> Note: If you're unable to fill it then reply on this mail using the subject '%s unable to fill muQ' and state your reason in the mail body" %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0])
+#            mailer(body , emailsTo.iloc[i,3])
 
 def starts():
     print('starts working')
-    schedule.every(10).seconds.do(mail)
-    
+    schedule.every(1).minutes.do(mail)
 
-
-        
-schedule.every().wednesday.at("20:47").do(starts)
 mail()
+        
+##schedule.every().thursday.at("15:04").do(starts)
+##
 ##while True:
 ##    schedule.run_pending()
 ##    time.sleep(1)
-##
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
