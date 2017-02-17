@@ -16,8 +16,11 @@ import re
 
 os.chdir(r'C:\Users\kumar.singh\Desktop\sharepoint')
 
-spLink = r'https://musigma-my.sharepoint.com/personal/anantdeep_parihar_mu-sigma_com/Documents/mu.xlsx?web=1 '
+#spLink = r'https://musigma-my.sharepoint.com/personal/anantdeep_parihar_mu-sigma_com/Documents/mu.xlsx?web=1 '
+spLink = r"https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ.xlsx?web=1 "
 saveTo = r'C:\Users\kumar.singh\Desktop\sharepoint\SP.xlsx'
+
+
 
 def spfetcher(spLink, saveTo):
     xl = Dispatch("Excel.Application")
@@ -33,7 +36,8 @@ def mailer(body, to ):
     outlook = win32.Dispatch('outlook.application')
     mail = outlook.CreateItem(0)
     mail.To = to
-    mail.Subject = '[Reminder]Fill MuQ on Sharepoint immediately'
+#   mail.Subject = '[Reminder]Fill MuQ on Sharepoint immediately'
+    mail.Subject = 'Update muQ on sharepoint!'
     mail.HTMLBody = body# this field is optional #add sharepoint link
     mail.Send()
 
@@ -93,7 +97,7 @@ def mail():
 #            print(i)
 #            print(re.search(r'(.*) Unable to fill muQ',all_inbox[i].Subject,re.I ).group(1))
             try:
-                mail_reply.append(re.search(r'(.*) Unable to fill muQ',all_inbox[i].Subject,re.I ).group(1))
+                mail_reply.append(re.search(r'[\'\"]?(.*) Unable to fill muQ',all_inbox[i].Subject,re.I ).group(1))
             except:
                 pass
     for i in range(0,len(email.ix[:,0].isin(unsent))):
@@ -104,28 +108,51 @@ def mail():
     emailsTo = email.ix[email.ix[:,0].isin(unsent) & df['can_reply'],]
     
     print(datetime.now() , emailsTo)
-    if datetime.now().minute > 2:        
+    if datetime.now().minute > -1:        
         for i in range(0,len(emailsTo)):
             print('emails sent to  AL', emailsTo.iloc[i,1], 'from' ,emailsTo.iloc[i,0])
-            body = "SENT to AL<p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fill it ASAP. </p><p>%s</p> Note: If you're unable to fill it then reply on this mail using the subject '%s unable to fill muQ' and state your reason in the mail body" %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0])
-#            mailer(body , emailsTo.iloc[i,1])
-    else:
-        for i in range(0,len(emailsTo)):
-            print('emails sent to  team and AL', emailsTo.iloc[i,3], 'from' ,emailsTo.iloc[i,0])
-            body = "SENT to AL<p>Hi, Your team, %s, has missed the muQ deadline</p>.<p> Please fill it ASAP. </p><p>%s</p> Note: If you're unable to fill it then reply on this mail using the subject '%s unable to fill muQ' and state your reason in the mail body" %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0])
-#            mailer(body , emailsTo.iloc[i,3])
+            body = """Hi, your team %s has missed the muQ deadline. Please update the scorecard on the following link: <p>%s </p>
+                        Note: If you're unable to update the scorecard due to some reason, then reply to this mail with the subject
+                        '%s Unable to fill muQ' and specify the reason in the mail body.""" %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0])
+            mailer(body , emailsTo.iloc[i,1])
+##    else:
+##        for i in range(0,len(emailsTo)):
+##            print('emails sent to  team and AL', emailsTo.iloc[i,1], 'from' ,emailsTo.iloc[i,0])
+##            body = """Hi, your team %s has missed the muQ deadline. Please update the scorecard on the following link: <p>%s </p>
+##                        Note: If you're unable to update the scorecard due to some reason, then reply to this mail with the subject
+##                        '%s Unable to fill muQ' and specify the reason in the mail body.""" %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0])
+##            mailer(body , emailsTo.iloc[i,3])
 
 def starts():
-    print('starts working')
-    schedule.every(1).minutes.do(mail)
+    print('starts working at ' , datetime.now())
+    schedule.every(15).minutes.do(mail)
 
-mail()
-        
-##schedule.every().thursday.at("15:04").do(starts)
+#mail()
+
+def firstMail():
+    print('first mail sending')
+    body = """Hello All,
+
+            <p>Another Friday and we are trying to go automated! </p>
+            <p>Please ensure you have the Quality Hour at 12 and update your scorecards at the following location:
+
+            <p>Note: Please fill only <b> numbers</b> in columns starting with the # symbol. Please refrain from typing characters in these columns. Also edit the excel only in browser, not in Excel Application. <p>%s</p>
+
+            Thanks""" %(spLink)
+    to   = "; ".join(list(email.ix[:,1]))
+#    to = 'kumar.singh@mu-sigma.com'
+    mailer(body, to)
+
+
+schedule.every().friday.at("13:33").do(starts)
+print(datetime.now())
+##schedule.every().friday.at("12:45").do(firstMail)
 ##
-##while True:
-##    schedule.run_pending()
-##    time.sleep(1)
+##schedule.every().friday.at("13:00").do(starts)
+
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 
