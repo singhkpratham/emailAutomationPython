@@ -4,7 +4,9 @@ os.chdir('C:\\Users\\kumar.singh\\Desktop\\sharepoint')
 from win32com.client import Dispatch
 import re
 
-spLink = r'https://musigma-my.sharepoint.com/personal/anantdeep_parihar_mu-sigma_com/Documents/mu.xlsx?web=1 '
+spLink = r"https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ.xlsx?web=1 "
+
+#spLink = r'https://musigma-my.sharepoint.com/personal/anantdeep_parihar_mu-sigma_com/Documents/mu.xlsx?web=1 '
 saveTo = r'C:\Users\kumar.singh\Desktop\sharepoint\SP.xlsx'
 
 def spfetcher(spLink, saveTo):
@@ -26,7 +28,7 @@ for i in range(0,df.shape[1]):
             print(j , i)
         except:
             try:
-                if bool(re.search("NA|NO|Yes" , df.ix[j,i], re.I)):
+                if bool(re.search("NA|NO" , df.ix[j,i], re.I)):
                     df.ix[j,i] = 0
             except:
                 pass
@@ -49,8 +51,8 @@ collate = pd.DataFrame({
     'Response Time':[''],
     '# of scoreboards | # Subgroups':['%s|%s'%(noScoreb,noGroups)],
     '# of errors this week|# of RCAs reviewed by FUL':['%s|%s'%(noErrors,noRCA)],
-    '# of groups < 2 weeks since last error (%)' : ['%s (%d%%)' %(noLessThan2Weeks, round(noLessThan2Weeks / df.ix[:,2].count()*100))],
-    '# of groups > 6 weeks since last error (%)' : ['%s (%d%%)' %(noMoreThan6Weeks, round(noMoreThan6Weeks / df.ix[:,2].count()*100))],
+    '# of groups < 2 weeks since last error (%)' : ['%s (%s%%)' %(noLessThan2Weeks, round(noLessThan2Weeks / df.ix[:,2].count()*100))],
+    '# of groups > 6 weeks since last error (%)' : ['%s (%s%%)' %(noMoreThan6Weeks, round(noMoreThan6Weeks / df.ix[:,2].count()*100))],
     '# red (%)+ | # green (%)+ | # Tracked (%)++ | Total # ' : ['%s(%s%%)|%s(%s%%)|%s(%s%%)|%s' %( noRed,perRed ,noGreen  ,perGreen ,
                                                                                              noTotalRedGreen   ,round(noTotalRedGreen/noTotalDel*100)    ,noTotalDel ) ]                                                       
 })
