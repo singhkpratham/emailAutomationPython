@@ -36,7 +36,7 @@ reminderMailBody = """Hi, your team %s has missed the muQ deadline.Please update
                                 and specify the reason in the mail body. Please copy the subject as it is.<p>Note: This is an
                                 automatically generated mail that gets triggered every 15 minutes. To stop these mails please
                                 either fill your scorecard or reply to this mail with the mail subject as specified above."""
-FULemailid = "abhishek.chopra@mu-sigma.com"
+FULemailid = "kumar.singh@mu-sigma.com"
 
 email = pd.read_excel('emails_muq.xlsx')    #fetching table with email ids
 email.ix[email['Team members'].isnull(),'Team members'] = " "
@@ -140,29 +140,32 @@ def mailToFUL(teamNameSeries):
 def reminderSender():
     print('sending reminder started at ' , datetime.now())
     emailsTo = keywordAndUnsent()
+    if len(emailsTo) == 0:
+        mailToFUL(emailsTo['Team'])
+        raise SystemExit()
     
     if datetime.now().minute > 4:
         for i in range(0,len(emailsTo)):
             print('emails sent to  AL', emailsTo.loc[i,'AL'], 'from' ,emailsTo.loc[i,'Subgroup name'])
-            mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) ,emailsTo.loc[i,'AL'])
-#                'kumar.singh@mu-sigma.com')
+            mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) , #emailsTo.loc[i,'AL'])
+                'kumar.singh@mu-sigma.com')
                 
     else:
         mailToFUL(emailsTo['Team'])
         for i in range(0,len(emailsTo)):        
             print('emails sent to  team and AL', emailsTo.loc[i,"AL"], 'from' ,emailsTo.loc[i,'Subgroup name'])
- #           mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]), 'anantdeep.parihar@mu-sigma.com')
-            mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) , emailsTo.loc[i,'All'])
+            mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]), 'anantdeep.parihar@mu-sigma.com')
+ #           mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) , emailsTo.loc[i,'All'])
             
     print('sending reminder finished at ' , datetime.now())
   
 
 def starts():
     print('starts function working at ' , datetime.now())
-    schedule.every(3).minutes.do(reminderSender)
+    schedule.every(15).minutes.do(reminderSender)
 
 
-#schedule.every().friday.at("12:45").do(starts)
+schedule.every().friday.at("14:00").do(starts)
 
 print('script started at: ',datetime.now())
 
@@ -170,9 +173,9 @@ print('script started at: ',datetime.now())
 
 #schedule.every().friday.at("11:30").do(firstMail)
 
-#while True:
-#    schedule.run_pending()
-#    time.sleep(1)
+while True:
+    schedule.run_pending()
+    time.sleep(1)
 
 
 
