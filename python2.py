@@ -20,7 +20,7 @@ os.chdir(r'C:\Users\kumar.singh\Desktop\sharepoint')
 #spLink = r"https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ.xlsx?web=1 "
 spLink = r'https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ%20status_02242017.xlsx?web=1'
 saveTo = r'C:\Users\kumar.singh\Desktop\sharepoint\SP.xlsx'
-firstMailBody = """Hello All,
+firstMailBody = """<font face="Calibri" >Hello All,
                     <p>After last Friday's successful trial, we are trying to fully automate this process.
                     Please ensure you have the Quality Hour at 12 and update your scorecards at the following location:</p>
                     <p>%s</p>
@@ -28,14 +28,14 @@ firstMailBody = """Hello All,
                     Avoid typing characters in these columns.
                     Also edit the excel only in <strong>browser</strong>, not in Excel Application.
                     <p>Please note that there are extra columns to fill this time around (Q-hour summary shared, # utilities & # flows etc.)</p>
-                    <p>Thanks.</p>""" %(spLink)
+                    <p>Thanks.</p></font>""" %(spLink)
                     
-reminderMailBody = """Hi, your team %s has missed the muQ deadline.Please update the scorecard
+reminderMailBody = """<font face="Calibri" >Hi, your team %s has missed the muQ deadline.Please update the scorecard
                          on the following link: <p>%s<p>If you're unable to update the
                                 scorecard due to some reason, then reply to this mail with the subject '%s Unable to fill muQ'
                                 and specify the reason in the mail body. Please copy the subject as it is.<p>Note: This is an
                                 automatically generated mail that gets triggered every 15 minutes. To stop these mails please
-                                either fill your scorecard or reply to this mail with the mail subject as specified above."""
+                                either fill your scorecard or reply to this mail with the mail subject as specified above.</font>"""
 FULemailid = "kumar.singh@mu-sigma.com"
 
 email = pd.read_excel('emails_muq.xlsx')    #fetching table with email ids
@@ -173,14 +173,21 @@ print('script started at: ',datetime.now())
 
 #schedule.every().friday.at("11:30").do(firstMail)
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+#while True:
+#    schedule.run_pending()
+#    time.sleep(1)
 
 
 
 
+a = """Hello All,
+<font face="Comic sans MS" size="5">Verdana<p>After last Friday’s successful trial, we are trying to fully automate this process.
+Please ensure you have the Quality Hour at 12 and update your scorecards at the following location:</p>
+<p>%s</p></font>
+Please fill only <strong>numbers</strong> in columns starting with the <strong>#</strong> symbol. Please refrain from typing characters in these columns. Also edit the excel only in <strong>browser</strong>, not in Excel Application.
+<p>Please note that there are extra columns to fill this time around (Q-hour summary shared, # utilities & # flows etc.)</p>
 
+<p>Thanks.</p>"""
 
 
 
