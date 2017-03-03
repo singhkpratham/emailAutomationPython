@@ -18,23 +18,23 @@ os.chdir(r'C:\Users\kumar.singh\Desktop\sharepoint')
 
 #spLink = r'https://musigma-my.sharepoint.com/personal/anantdeep_parihar_mu-sigma_com/Documents/mu.xlsx?web=1 '
 #spLink = r"https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ.xlsx?web=1 "
-spLink = r'https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ%20status_02242017.xlsx?web=1'
+#spLink = r'https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ%20status_02242017.xlsx?web=1'
+spLink = r'https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ%20status_03032017.xlsx?web=1'
 saveTo = r'C:\Users\kumar.singh\Desktop\sharepoint\SP.xlsx'
 firstMailBody = """<font face="Calibri" >Hello All,
-                    <p>After last Friday's successful trial, we are trying to fully automate this process.
+                    <p>
                     Please ensure you have the Quality Hour at 12 and update your scorecards at the following location:</p>
                     <p>%s</p>
                     Please fill only <strong>numbers</strong> in columns starting with the # symbol.
                     Avoid typing characters in these columns.
                     Also edit the excel only in <strong>browser</strong>, not in Excel Application.
-                    <p>Please note that there are extra columns to fill this time around (Q-hour summary shared, # utilities & # flows etc.)</p>
                     <p>Thanks.</p></font>""" %(spLink)
                     
-reminderMailBody = """<font face="Calibri" >Hi, your team %s has missed the muQ deadline.Please update the scorecard
+reminderMailBody = """<font face="Calibri" >Hi, your team %s has missed the muQ deadline. Please update the scorecard
                          on the following link: <p>%s<p>If you're unable to update the
                                 scorecard due to some reason, then reply to this mail with the subject '%s Unable to fill muQ'
-                                and specify the reason in the mail body. Please copy the subject as it is.<p>Note: This is an
-                                automatically generated mail that gets triggered every 15 minutes. To stop these mails please
+                                and specify the reason in the mail body. Copy the subject specified within quotes.<p>Note: This is an
+                                automatically generated mail that gets triggered every 15 minutes. To stop these mails
                                 either fill your scorecard or reply to this mail with the mail subject as specified above.</font>"""
 FULemailid = "kumar.singh@mu-sigma.com"
 
@@ -70,7 +70,7 @@ def defaulters():
     print("inside defaulters")
     df    = spfetcher(spLink, saveTo)   #fetch the excel sheet
     df= df.ix[df['Team'].isnull() == False,:]
-    unsent = df.ix[pd.isnull(df.iloc[:,3:]).sum(axis  = 1)==15, "Team"]
+    unsent = df.ix[pd.isnull(df.iloc[:,3:]).sum(axis  = 1)==17, "Team"]
     return(df,unsent)
 
 def keywordReplied():
@@ -125,6 +125,8 @@ def firstMail():
     print('first mail sending at:', datetime.now())
     body = firstMailBody
     to   = "; ".join(list(email.ix[:,'All']))
+    to = to.split('; ')
+    to = '; '.join(set(to))
     to = to + "; Abhinav.Dasgupta@mu-sigma.com; Abhishek.Chopra@mu-sigma.com"
 #    to = 'kumar.singh@mu-sigma.com'
     mailer(body, to)
@@ -140,6 +142,7 @@ def mailToFUL(teamNameSeries):
 def reminderSender():
     print('sending reminder started at ' , datetime.now())
     emailsTo = keywordAndUnsent()
+    emailsTo = emailsTo.reset_index(drop=True)
     if len(emailsTo) == 0:
         mailToFUL(emailsTo['Team'])
         raise SystemExit()
@@ -147,13 +150,14 @@ def reminderSender():
     if datetime.now().minute > 4:
         for i in range(0,len(emailsTo)):
             print('emails sent to  AL', emailsTo.loc[i,'AL'], 'from' ,emailsTo.loc[i,'Subgroup name'])
-            mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) , #emailsTo.loc[i,'AL'])
-                'kumar.singh@mu-sigma.com')
+#            mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) , emailsTo.loc[i,'AL'])
+                'anantdeep.parihar@mu-sigma.com')
+
                 
     else:
         mailToFUL(emailsTo['Team'])
         for i in range(0,len(emailsTo)):        
-            print('emails sent to  team and AL', emailsTo.loc[i,"AL"], 'from' ,emailsTo.loc[i,'Subgroup name'])
+            print('emails sent to  team and AL', emailsTo.loc[i,"All"], 'from' ,emailsTo.loc[i,'Subgroup name'])
             mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]), 'anantdeep.parihar@mu-sigma.com')
  #           mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) , emailsTo.loc[i,'All'])
             
@@ -165,7 +169,7 @@ def starts():
     schedule.every(15).minutes.do(reminderSender)
 
 
-schedule.every().friday.at("14:00").do(starts)
+#schedule.every().friday.at("14:00").do(starts)
 
 print('script started at: ',datetime.now())
 
@@ -177,17 +181,6 @@ print('script started at: ',datetime.now())
 #    schedule.run_pending()
 #    time.sleep(1)
 
-
-
-
-a = """Hello All,
-<font face="Comic sans MS" size="5">Verdana<p>After last Friday’s successful trial, we are trying to fully automate this process.
-Please ensure you have the Quality Hour at 12 and update your scorecards at the following location:</p>
-<p>%s</p></font>
-Please fill only <strong>numbers</strong> in columns starting with the <strong>#</strong> symbol. Please refrain from typing characters in these columns. Also edit the excel only in <strong>browser</strong>, not in Excel Application.
-<p>Please note that there are extra columns to fill this time around (Q-hour summary shared, # utilities & # flows etc.)</p>
-
-<p>Thanks.</p>"""
 
 
 
