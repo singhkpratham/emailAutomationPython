@@ -19,7 +19,7 @@ os.chdir(r'C:\Users\kumar.singh\Desktop\sharepoint')
 #spLink = r'https://musigma-my.sharepoint.com/personal/anantdeep_parihar_mu-sigma_com/Documents/mu.xlsx?web=1 '
 #spLink = r"https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ.xlsx?web=1 "
 #spLink = r'https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ%20status_02242017.xlsx?web=1'
-spLink = r'https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ%20status_03032017.xlsx?web=1'
+spLink = r'https://musigma.sharepoint.com/sites/DU5–Horizontal%20Initiatives/Shared%20Documents/Quality%20Initiatives/muQ%20status_10032017.xlsx?web=1'
 saveTo = r'C:\Users\kumar.singh\Desktop\sharepoint\SP.xlsx'
 firstMailBody = """<font face="Calibri" >Hello All,
                     <p>
@@ -151,7 +151,7 @@ def reminderSender():
         for i in range(0,len(emailsTo)):
             print('emails sent to  AL', emailsTo.loc[i,'AL'], 'from' ,emailsTo.loc[i,'Subgroup name'])
 #            mailer(reminderMailBody %(emailsTo.iloc[i,0],spLink,emailsTo.iloc[i,0]) , emailsTo.loc[i,'AL'])
-                'anantdeep.parihar@mu-sigma.com')
+              
 
                 
     else:

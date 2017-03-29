@@ -1,0 +1,446 @@
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>S.No</th>
+      <th>Date</th>
+      <th>Project Name</th>
+      <th>Stakeholder</th>
+      <th>Sprint</th>
+      <th>Report/Category</th>
+      <th>Deliverables</th>
+      <th>Tasks</th>
+      <th>CS_Owner Mu Sigma</th>
+      <th>Owner1 Mu Sigma</th>
+      <th>Owner2 Mu Sigma</th>
+      <th>#Hrs Planned</th>
+      <th>#Hrs Actually Utilized</th>
+      <th>ETA</th>
+      <th>Delivery Status_IND ( Planned - On track, Planned- At Risk, Unplanned, Closed)</th>
+      <th>Delivery Status_US ( Red, Green)</th>
+      <th>Comments/Why it will fail/What are Quality Concerns?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>March 6th</td>
+      <td>WBR</td>
+      <td>Karan</td>
+      <td>-</td>
+      <td>Misc</td>
+      <td>Final WBR document</td>
+      <td>NaN</td>
+      <td>Pakra</td>
+      <td>Sukriti/Vinayak</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>March 6th</td>
+      <td>Misc</td>
+      <td>Natalia</td>
+      <td>-</td>
+      <td>Misc</td>
+      <td>BoW document completion</td>
+      <td>Share the document as per the mail from Natalia</td>
+      <td>Ashish</td>
+      <td>Sukriti</td>
+      <td>NaN</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>18</td>
+      <td>March 6th</td>
+      <td>QBU</td>
+      <td>Anshul</td>
+      <td>NaN</td>
+      <td>QBU</td>
+      <td>QBU Process</td>
+      <td>1)Share QBU template that will be used going f...</td>
+      <td>Archana</td>
+      <td>Raj</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>19</td>
+      <td>March 6th</td>
+      <td>GCM - Utilization Projection</td>
+      <td>Sujeet Jha</td>
+      <td>NaN</td>
+      <td>GCM</td>
+      <td>Utilization projection</td>
+      <td>Understand requirement, start documentation ef...</td>
+      <td>Archana</td>
+      <td>Biplab</td>
+      <td>Aravind</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Planned-On Track</td>
+      <td>NaN</td>
+      <td>Prioritizing this. Looking at the vloume of th...</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20</td>
+      <td>March 6th</td>
+      <td>L2O Pipeline report</td>
+      <td>Sujeet Jha</td>
+      <td>NaN</td>
+      <td>L2O</td>
+      <td>Pipeline Report</td>
+      <td>Understand requirement, start documentation ef...</td>
+      <td>Archana</td>
+      <td>Biplab</td>
+      <td>Aravind</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>can only take up once Utilization forecast is ...</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>21</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>Weekly Deals Table</td>
+      <td>NaN</td>
+      <td>a) Update logic\nb) Fix VBA\nc) Change log cre...</td>
+      <td>Doug</td>
+      <td>Sourabh</td>
+      <td>Sourabh</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>On hold</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>22</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>A13 OneNote</td>
+      <td>Live Run</td>
+      <td>NaN</td>
+      <td>Doug</td>
+      <td>Swaroop</td>
+      <td>Ishman</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Planned-On Track</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>23</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>WW TZ OneNote Publish</td>
+      <td>Live Run</td>
+      <td>NaN</td>
+      <td>Doug</td>
+      <td>Aditya</td>
+      <td>Sourabh</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Planned-On Track</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>24</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>A13 Weekly Forecast Template</td>
+      <td>Live Run</td>
+      <td>NaN</td>
+      <td>Doug</td>
+      <td>Sourabh</td>
+      <td>Sourabh</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Planned-On Track</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>25</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>Slips Wherenow</td>
+      <td>Live Run</td>
+      <td>NaN</td>
+      <td>Doug</td>
+      <td>Ayush</td>
+      <td>Saurabh</td>
+      <td>1.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Planned-On Track</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>26</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>Top Deals</td>
+      <td>Live Run</td>
+      <td>NaN</td>
+      <td>Doug</td>
+      <td>Ishman</td>
+      <td>Sourabh</td>
+      <td>0.5</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Planned-On Track</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>27</td>
+      <td>March 6th</td>
+      <td>LATAM</td>
+      <td>Karan</td>
+      <td>Misc</td>
+      <td>IRR/ SAB</td>
+      <td>Meeting minutes for IRR/SAB clarification</td>
+      <td>Call from Patricia</td>
+      <td>Doug/Pakra</td>
+      <td>Ayush</td>
+      <td>Nikhil/Aditya</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>28</td>
+      <td>March 6th</td>
+      <td>LATAM</td>
+      <td>Karan</td>
+      <td>S0</td>
+      <td>IRR</td>
+      <td>Data Mapping refined document</td>
+      <td>Refinement of document based on Patricia's call</td>
+      <td>Doug/Pakra</td>
+      <td>Ayush</td>
+      <td>Nikhil</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>29</td>
+      <td>March 6th</td>
+      <td>LATAM</td>
+      <td>Karan</td>
+      <td>S0</td>
+      <td>IRR</td>
+      <td>Dry Run</td>
+      <td>Based on Patricia's Suggestion</td>
+      <td>Doug/Pakra</td>
+      <td>Ayush</td>
+      <td>Nikhil</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>30</td>
+      <td>March 6th</td>
+      <td>LATAM</td>
+      <td>Karan</td>
+      <td>S1</td>
+      <td>Premier Excellence</td>
+      <td>Dry Run</td>
+      <td>Start with the dry run from the video</td>
+      <td>Doug/Pakra</td>
+      <td>-</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>31</td>
+      <td>March 6th</td>
+      <td>LATAM</td>
+      <td>Karan</td>
+      <td>S0</td>
+      <td>Premier Excellence</td>
+      <td>Process flow document</td>
+      <td>Validate the process document from the video</td>
+      <td>Doug/Pakra</td>
+      <td>Ishman</td>
+      <td>Nikhil</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>32</td>
+      <td>March 6th</td>
+      <td>LATAM</td>
+      <td>Karan</td>
+      <td>S1</td>
+      <td>SAB</td>
+      <td>Data Mapping document</td>
+      <td>A)Where do we need help from Karan B) Validati...</td>
+      <td>Doug/Pakra</td>
+      <td>Srindhi</td>
+      <td>Nikhil</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Will get on a call with Karan On Monday and cl...</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>33</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>Metadata Document</td>
+      <td>Complete 3 remaing file's metadata documnetation</td>
+      <td>NaN</td>
+      <td>Doug</td>
+      <td>TBD</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Should not spend time on this. Can be updated ...</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>34</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>Weekly Deals Table</td>
+      <td>File for next Thursday run</td>
+      <td>Awaiting criteria changes from business. Finis...</td>
+      <td>Doug</td>
+      <td>Ishman</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>35</td>
+      <td>March 6th</td>
+      <td>Sales RoB</td>
+      <td>Karan</td>
+      <td>NaN</td>
+      <td>Accordion</td>
+      <td>Updated logic(if need be)</td>
+      <td>NaN</td>
+      <td>Doug</td>
+      <td>Ishman</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>36</td>
+      <td>March 6th</td>
+      <td>Deals Management</td>
+      <td>Antonis</td>
+      <td>NaN</td>
+      <td>muPDNA for Deal Management dashboard revamp</td>
+      <td>muPDNA_V1</td>
+      <td>Start with Representation and Hypotheses for t...</td>
+      <td>Hampton</td>
+      <td>Raj</td>
+      <td>Saurabh</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>On hold for today - To be resumed on Monday</td>
+    </tr>
+  </tbody>
+</table>
