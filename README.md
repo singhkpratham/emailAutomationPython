@@ -1,7 +1,7 @@
 # emailAutomationPython
 Automating the weekly tracker by fetching data from excel online and sending mail through outlook, collating at the end of the week.
 
-
+```
 # -*- coding: utf-8 -*-
 
 """
@@ -180,3 +180,4 @@ print('script started at: ',datetime.now())
 #while True:
 #    schedule.run_pending()
 #    time.sleep(1)
+```
